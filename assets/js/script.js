@@ -104,9 +104,8 @@ function changeTimeStatus() {
 }
 
 $('.saveBtn').on('click', function () {
-
-  var textContent = $('textarea').val();
-  console.log(textContent);
+  // grab the text content of the textarea element
+  console.log($(this).parent().children('.col-10').val())
 })
 
 function saveDetails() {
