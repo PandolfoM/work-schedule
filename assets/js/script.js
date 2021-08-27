@@ -2,7 +2,7 @@ dayjs.extend(window.dayjs_plugin_advancedFormat)
 dayjs.extend(window.dayjs_plugin_isSameOrAfter)
 dayjs.extend(window.dayjs_plugin_isBetween)
 
-var details = {};
+var details = [];
 
 var nineAmEL = document.querySelector('#nineAm');
 var tenAmEL = document.querySelector('#tenAm');
@@ -105,11 +105,22 @@ function changeTimeStatus() {
 
 $('.saveBtn').on('click', function () {
   // grab the text content of the textarea element
-  console.log($(this).parent().children('.col-10').val())
+  var scheduleDetails =($(this).parent().children('.col-10').val().trim());
+  if (scheduleDetails === "") {
+    return
+  } else {
+    details.push(scheduleDetails);
+    saveDetails();
+  }
 })
 
 function saveDetails() {
   localStorage.setItem('details', JSON.stringify(details));
 }
 
+function getDetails() {
+  detailsRetrieve = JSON.parse(localStorage.getItem('details'));
+}
+
 changeTimeStatus();
+getDetails();
