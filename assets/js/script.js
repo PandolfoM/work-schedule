@@ -2,6 +2,8 @@ dayjs.extend(window.dayjs_plugin_advancedFormat)
 dayjs.extend(window.dayjs_plugin_isSameOrAfter)
 dayjs.extend(window.dayjs_plugin_isBetween)
 
+var details = {};
+
 var nineAmEL = document.querySelector('#nineAm');
 var tenAmEL = document.querySelector('#tenAm');
 var elevenAmEL = document.querySelector('#elevenAm');
@@ -17,6 +19,7 @@ var timeEl = document.querySelector('#currentDay');
 timeEl.textContent = dayjs().format('dddd, MMMM Do');
 
 function changeTimeStatus() {
+  // check what time of day it is
   var time9Am = dayjs().set('hour', 9).set('minute', 00);
   var time10Am = dayjs().set('hour', 10).set('minute', 00);
   var time11Am = dayjs().set('hour', 11).set('minute', 00);
@@ -99,4 +102,15 @@ function changeTimeStatus() {
     $(fivePmEL).addClass('future');
   }
 }
+
+$('.saveBtn').on('click', function () {
+
+  var textContent = $('textarea').val();
+  console.log(textContent);
+})
+
+function saveDetails() {
+  localStorage.setItem('details', JSON.stringify(details));
+}
+
 changeTimeStatus();
