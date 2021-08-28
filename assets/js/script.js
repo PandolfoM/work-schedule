@@ -2,8 +2,6 @@ dayjs.extend(window.dayjs_plugin_advancedFormat)
 dayjs.extend(window.dayjs_plugin_isSameOrAfter)
 dayjs.extend(window.dayjs_plugin_isBetween)
 
-var details = [];
-
 var nineAmEL = document.querySelector('#nineAm');
 var tenAmEL = document.querySelector('#tenAm');
 var elevenAmEL = document.querySelector('#elevenAm');
@@ -103,23 +101,115 @@ function changeTimeStatus() {
   }
 }
 
-$('.saveBtn').on('click', function () {
+$('.nineAmBtn').on('click', function () {
   // grab the text content of the textarea element
-  var scheduleDetails =($(this).parent().children('.col-10').val().trim());
+  var scheduleDetails =($(this).parent().children('#nineAm').val().trim());
   if (scheduleDetails === "") {
     return
   } else {
-    details.push(scheduleDetails);
-    saveDetails();
+    localStorage.setItem('9AM', scheduleDetails);
   }
 })
 
-function saveDetails() {
-  localStorage.setItem('details', JSON.stringify(details));
-}
+$('.tenAmBtn').on('click', function () {
+  // grab the text content of the textarea element
+  var scheduleDetails =($(this).parent().children('#tenAm').val().trim());
+  if (scheduleDetails === "") {
+    return
+  } else {
+    localStorage.setItem('10AM', scheduleDetails);
+  }
+})
+
+$('.elevenAmBtn').on('click', function () {
+  // grab the text content of the textarea element
+  var scheduleDetails =($(this).parent().children('#elevenAm').val().trim());
+  if (scheduleDetails === "") {
+    return
+  } else {
+    localStorage.setItem('11AM', scheduleDetails);
+  }
+})
+
+$('.twelvePmBtn').on('click', function () {
+  // grab the text content of the textarea element
+  var scheduleDetails =($(this).parent().children('#twelvePm').val().trim());
+  if (scheduleDetails === "") {
+    return
+  } else {
+    localStorage.setItem('12PM', scheduleDetails);
+  }
+})
+
+$('.onePmBtn').on('click', function () {
+  // grab the text content of the textarea element
+  var scheduleDetails =($(this).parent().children('#onePm').val().trim());
+  if (scheduleDetails === "") {
+    return
+  } else {
+    localStorage.setItem('1PM', scheduleDetails);
+  }
+})
+
+$('.twoPmBtn').on('click', function () {
+  // grab the text content of the textarea element
+  var scheduleDetails =($(this).parent().children('#twoPm').val().trim());
+  if (scheduleDetails === "") {
+    return
+  } else {
+    localStorage.setItem('2PM', scheduleDetails);
+  }
+})
+
+$('.threePmBtn').on('click', function () {
+  // grab the text content of the textarea element
+  var scheduleDetails =($(this).parent().children('#threePm').val().trim());
+  if (scheduleDetails === "") {
+    return
+  } else {
+    localStorage.setItem('3PM', scheduleDetails);
+  }
+})
+
+$('.fourPmBtn').on('click', function () {
+  // grab the text content of the textarea element
+  var scheduleDetails =($(this).parent().children('#fourPm').val().trim());
+  if (scheduleDetails === "") {
+    return
+  } else {
+    localStorage.setItem('4PM', scheduleDetails);
+  }
+})
+
+$('.fivePmBtn').on('click', function () {
+  // grab the text content of the textarea element
+  var scheduleDetails =($(this).parent().children('#fivePm').val().trim());
+  if (scheduleDetails === "") {
+    return
+  } else {
+    localStorage.setItem('5PM', scheduleDetails);
+  }
+})
 
 function getDetails() {
-  detailsRetrieve = JSON.parse(localStorage.getItem('details'));
+  retrive9AM = localStorage.getItem('9AM');
+  retrive10AM = localStorage.getItem('10AM');
+  retrive11AM = localStorage.getItem('11AM');
+  retrive12PM = localStorage.getItem('12PM');
+  retrive1PM = localStorage.getItem('1PM');
+  retrive2PM = localStorage.getItem('2PM');
+  retrive3PM = localStorage.getItem('3PM');
+  retrive4PM = localStorage.getItem('4PM');
+  retrive5PM = localStorage.getItem('5PM');
+  nineAmEL.textContent = retrive9AM;
+  tenAmEL.textContent = retrive10AM;
+  elevenAmEL.textContent = retrive11AM;
+  twelvePmEL.textContent = retrive12PM;
+  onePmEL.textContent = retrive1PM;
+  twoPmEL.textContent = retrive2PM;
+  threePmEL.textContent = retrive3PM;
+  fourPmEL.textContent = retrive4PM;
+  fivePmEL.textContent = retrive5PM;
 }
 
 changeTimeStatus();
